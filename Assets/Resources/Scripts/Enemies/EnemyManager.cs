@@ -53,16 +53,16 @@ public class EnemyManager : MonoBehaviour
         currentFastInvaderAudioClip = fastInvaderAudioClips.First;
         fastInvaderMusic = gameObject.transform.Find("FastInvaderAudio").GetComponent<AudioSource>();
         fastInvaderMusic.clip = currentFastInvaderAudioClip.Value;
-        fastInvaderMusic.Play();
+        fastInvaderMusic.enabled = true;
         invaderKilled = gameObject.transform.Find("InvaderKilledAudio").GetComponent<AudioSource>();
         nextWave = gameObject.transform.Find("NextWaveAudio").GetComponent<AudioSource>();
-        enemySpeed = new Vector3(2.0f, 0, 0.10f);
+        enemySpeed = new Vector3(2.0f, 0, 0.75f);
         initialEnemySpeed = enemySpeed;
         enemySpeedIncreasePerDirectionChange = enemySpeed * 1.01f;
         wave = 1;
         enemyRows = 5;
         enemiesPerRow = 11;
-        secondsSinceDirectionChange = 0;
+        secondsSinceDirectionChange = 0f;
         directionChangeBuffer = 2.0f;
         secondsSinceEnemyShot = 0;
         secondsPerEnemyShotMax = 2f;
@@ -79,6 +79,7 @@ public class EnemyManager : MonoBehaviour
         Row3 = new List<GameObject>();
         Row4 = new List<GameObject>();
         SpawnRows();
+        enemiesPaused = false;
     }
 
     void Update()
@@ -88,17 +89,17 @@ public class EnemyManager : MonoBehaviour
             secondsSinceDirectionChange += Time.deltaTime;
             secondsSinceEnemyShot += Time.deltaTime;
             GameObject[] enemyProjectiles = GameObject.FindGameObjectsWithTag("EnemyProjectile");
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            GameObject player = GameObject.Find("Player");
 
-            // Make an enemy shoot if time < timer, there are currently less than 3 enemyProjectiles, and the player is alive.
-            if ((secondsSinceEnemyShot >= secondsPerEnemyShot) && (enemyProjectiles.Length < 3) && (player.GetComponent<Renderer>().enabled == true))
+            // Make an enemy shoot if time < timer, there are currently less than 3 enemyProjectiles, and the player is alive. 
+            if ((secondsSinceEnemyShot >= secondsPerEnemyShot) && (enemyProjectiles.Length < 3) && (player != null) && (player.GetComponent<Player>().Dead == false))
             {
                 EnemyShoot();
                 secondsSinceEnemyShot = 0;
                 secondsPerEnemyShot = Random.Range(0.5f, secondsPerEnemyShotMax);
             }
 
-            // If a wave of enemies has been killed.
+            // If a wave of enemies has been killed. 
             if ((Row0.Count == 0) && (Row1.Count == 0) && (Row2.Count == 0) && (Row3.Count == 0) && (Row4.Count == 0))
             {
                 secondsPerEnemyShotMax *= (9 + wave) / 10;

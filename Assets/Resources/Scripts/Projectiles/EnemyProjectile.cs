@@ -24,7 +24,7 @@ public class EnemyProjectile : MonoBehaviour, IProjectile
         length = 7.5f;
         speed = 60;
         offset = new Vector3(Random.Range(-20f, 20f), 0, 0);
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.Find("Player");
         Vector3 initialStartPoint = transform.position + new Vector3(0, 0, 5.4f);
         Vector3 initialEndPoint = initialStartPoint + (((player.transform.position + offset) - initialStartPoint).normalized * length);
         velocity = ((player.transform.position + offset) - initialStartPoint).normalized * speed;

@@ -23,7 +23,7 @@ public class PlayerProjectile : MonoBehaviour, IProjectile
         length = 7.5f;
         Vector3 initialStartPoint = transform.position + new Vector3(0, 0, -5.4f);
         Vector3 initialEndPoint = initialStartPoint + new Vector3(0, 0, -length);
-        velocity = new Vector3(0, 0, -180);
+        velocity = new Vector3(0, 0, -240);
         lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.material = PlayerProjectileTexture;
         lineRenderer.widthMultiplier = width;

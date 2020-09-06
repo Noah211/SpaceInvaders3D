@@ -19,6 +19,8 @@ public class SwitchCameras : MonoBehaviour
         cameras.AddLast(perspectiveCamera);
         cameras.AddLast(TopCamera);
         currentCamera = cameras.First;
+        playerCamera.GetComponent<Camera>().enabled = true;
+        playerCamera.GetComponent<AudioListener>().enabled = true;
         perspectiveCamera.GetComponent<Camera>().enabled = false;
         perspectiveCamera.GetComponent<AudioListener>().enabled = false;
         TopCamera.GetComponent<Camera>().enabled = false;
