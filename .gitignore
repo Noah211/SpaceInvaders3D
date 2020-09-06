@@ -11,8 +11,9 @@
 [Aa]ssets/ParticlePack
 [Aa]ssets/StarSparrow
 [Aa]ssets/TextMesh Pro
+[Aa]ssets/Resources/Skyboxes
 
-Builds\SpaceInvaders3D_Data\sharedassets0.assets.resS
+Builds/SpaceInvaders3D_Data/sharedassets0.assets.resS
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
