@@ -16,17 +16,7 @@ public class MainMenuUIUpdater : MonoBehaviour
 
     void Start()
     {
-        string[] fileArray = Directory.GetFiles(Constants.SAVED_DATA, "*.xml");
-
-        if (fileArray.Length > 0)
-        {
-            highScore = StatLoader.LoadHighScore();
-        }
-        else
-        {
-            highScore = 0;
-        }
-
+        highScore = StatLoader.LoadHighScore();
         score = 0;
         ScoreCountText.text = score.ToString();
         HighScoreCountText.text = highScore.ToString();

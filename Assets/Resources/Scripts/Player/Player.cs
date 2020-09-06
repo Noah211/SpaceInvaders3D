@@ -65,29 +65,27 @@ public class Player : MonoBehaviour, IPlayer
 
     public void Die()
     {
+        lives--;
+        GameObject.Find("GameUIUpdater").GetComponent<GameUIUpdater>().UpdateLives(lives);
+        Dead = true;
         playerDeath.Play();
+        GetComponent<Renderer>().enabled = false;
         GameObject explosion = Instantiate(ExplosionEffect, transform.position, transform.rotation);
         explosion.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
         Destroy(explosion, 2);
 
-        if (lives > 1)
+        if (lives > 0)
         {
-            GetComponent<Renderer>().enabled = false;
             GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>().PauseEnemies(true);
         }
         else
         {
-            GetComponent<Renderer>().enabled = false;
             Instantiate(switchScenesPrefab);
             /*
             GameObject.Find("SwitchCameras").GetComponent<SwitchCameras>().UpdateFirstCamera();
             Destroy(gameObject);
             */
         }
-
-        lives--;
-        GameObject.Find("GameUIUpdater").GetComponent<GameUIUpdater>().UpdateLives(lives);
-        Dead = true;
     }
 
     public void Shoot()
@@ -103,7 +101,7 @@ public class Player : MonoBehaviour, IPlayer
 
     public void OnTriggerEnter(Collider other)
     {
-        if (!Dead)
+        if (!Dead && (lives > 0))
         {
             if (other.gameObject.CompareTag("EnemyProjectileCollider"))
             {

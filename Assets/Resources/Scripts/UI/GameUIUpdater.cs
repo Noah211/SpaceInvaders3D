@@ -21,17 +21,7 @@ public class GameUIUpdater : MonoBehaviour
 
     void Start()
     {
-        string[] fileArray = Directory.GetFiles(Constants.SAVED_DATA, "*.xml");
-
-        if (fileArray.Length > 0)
-        {
-            highScore = StatLoader.LoadHighScore();
-        }
-        else
-        {
-            highScore = 0;
-        }
-
+        highScore = StatLoader.LoadHighScore();
         score = 0;
         lives = 3;
         wave = 1;
@@ -61,10 +51,18 @@ public class GameUIUpdater : MonoBehaviour
 
     public void UpdateLives(int lives)
     {
-        this.lives = lives;
-        LivesText.text = "Lives: " + lives.ToString();
+        if (lives >= 0)
+        {
+            this.lives = lives;
+        }
+        else
+        {
+            this.lives = 0;
+        }
 
-        if (lives == 0)
+        LivesText.text = "Lives: " + this.lives.ToString();
+
+        if (this.lives == 0)
         {
             DisplayGameOver();
         }

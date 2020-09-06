@@ -7,7 +7,9 @@ The game was written in C# and developed in Unity.
 
 How to Run
 ----------
-Once the zip file has been downloaded, extract it, and navigate to SpaceInvaders3D\Builds and left click twice on SpaceInvaders3D.exe to run.
+Once the zip file has been downloaded, extract it, and navigate to SpaceInvaders3D\Builds\SpaceInvaders3D_Data.
+Extract the zip file, sharedassets0.zip, this must be done because the contents of the zip file are too large to upload to GitHub. 
+Navigate back to SpaceInvaders3D\Builds and left click twice on SpaceInvaders3D.exe to run.
 
 Keyboard Controls
 -----------------
@@ -19,7 +21,7 @@ Keyboard Controls
 
 Works Cited
 -----------
-Any assets from the unity asset store have been excluded from Github by using a .gitignore. However, you can access them on the asset store at the links below.
+Any assets from the unity asset store have been excluded from GitHub by using a .gitignore. However, you can access them on the asset store at the links below.
 
 •https://assetstore.unity.com/packages/2d/textures-materials/milky-way-skybox-94001
 •https://assetstore.unity.com/packages/3d/vehicles/space/star-sparrow-modular-spaceship-73167

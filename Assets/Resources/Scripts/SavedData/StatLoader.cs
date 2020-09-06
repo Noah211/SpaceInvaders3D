@@ -12,14 +12,24 @@ public static class StatLoader
     public static int LoadHighScore()
     {
         int highScore = 0;
-        XmlDocument doc = new XmlDocument();
-        doc.Load(Constants.SAVED_STATS);
+        string directory = Application.persistentDataPath + Constants.SAVED_DATA;
 
-        foreach (XmlNode node in doc.DocumentElement)
+        if (Directory.Exists(directory))
         {
-            if (node.Name.Equals("HighScore") && node.HasChildNodes)
+            string[] fileArray = Directory.GetFiles(directory, "*.xml");
+
+            if (fileArray.Length > 0)
             {
-                highScore = int.Parse(node.ChildNodes.Item(0).InnerText);
+                XmlDocument doc = new XmlDocument();
+                doc.Load(Application.persistentDataPath + Constants.SAVED_STATS);
+
+                foreach (XmlNode node in doc.DocumentElement)
+                {
+                    if (node.Name.Equals("HighScore") && node.HasChildNodes)
+                    {
+                        highScore = int.Parse(node.ChildNodes.Item(0).InnerText);
+                    }
+                }
             }
         }
 

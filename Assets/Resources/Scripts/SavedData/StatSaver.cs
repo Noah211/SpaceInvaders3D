@@ -11,19 +11,28 @@ public static class StatSaver
 {
     public static void SaveStats(int highScore)
     {
+        string directory = Application.persistentDataPath + Constants.SAVED_DATA;
+        string fileName = Application.persistentDataPath + Constants.SAVED_STATS;
+
+        // If the directory does not exist, create it
+        if (!Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+
         // Clear the XML File if it exists
-        string[] fileArray = Directory.GetFiles(Constants.SAVED_DATA, "*.xml");
+        string[] fileArray = Directory.GetFiles(directory, "*.xml");
 
         if (fileArray.Length > 0)
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(Constants.SAVED_STATS);
+            doc.Load(fileName);
             doc.DocumentElement.RemoveAll();
-            doc.Save(Constants.SAVED_STATS);
+            doc.Save(fileName);
         }
 
         // Save stats to XML File
-        XmlTextWriter writer = new XmlTextWriter(Constants.SAVED_STATS, Encoding.UTF8);
+        XmlTextWriter writer = new XmlTextWriter(fileName, Encoding.UTF8);
         writer.WriteStartDocument(true);
         writer.Formatting = Formatting.Indented;
         writer.WriteStartElement("Stats");
