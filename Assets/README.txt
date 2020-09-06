@@ -5,6 +5,10 @@ Each new wave is more challenger than the last as the enemies get faster and sho
 
 The game was written in C# and developed in Unity.
 
+How to Run
+----------
+Once the zip file has been downloaded, extract it, and navigate to SpaceInvaders3D\Builds and left click twice on SpaceInvaders3D.exe to run.
+
 Keyboard Controls
 -----------------
 •Esc: Exit the Game

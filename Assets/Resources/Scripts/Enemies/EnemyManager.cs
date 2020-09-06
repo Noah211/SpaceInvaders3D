@@ -56,7 +56,7 @@ public class EnemyManager : MonoBehaviour
         fastInvaderMusic.enabled = true;
         invaderKilled = gameObject.transform.Find("InvaderKilledAudio").GetComponent<AudioSource>();
         nextWave = gameObject.transform.Find("NextWaveAudio").GetComponent<AudioSource>();
-        enemySpeed = new Vector3(2.0f, 0, 0.75f);
+        enemySpeed = new Vector3(2.0f, 0, 0.075f);
         initialEnemySpeed = enemySpeed;
         enemySpeedIncreasePerDirectionChange = enemySpeed * 1.01f;
         wave = 1;
