@@ -1,7 +1,7 @@
 Author: Noah Logan
 
-This is a 3D recreation of Space Invaders (1978). Enemies shoot lasers that target the players position, with some random offset.
-Each new wave is more challenger than the last as the enemies get faster and shoot quicker.
+This is a 3D recreation of Space Invaders (1978). Enemies shoot lasers that target the player's position, with some random offset.
+Each new wave is more challenging than the last as the enemies get faster and shoot quicker.
 
 The game was written in C# and developed in Unity.
 
