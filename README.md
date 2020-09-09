@@ -5,6 +5,10 @@ Each new wave is more challenging than the last as the enemies get faster and sh
 
 The game was written in C# and developed in Unity.
 
+Youtube Video
+-------------
+https://youtu.be/3KTI3qol4HU
+
 How to Run
 ----------
 Left click the green button labeled "Code" in the top right corner of the screen, and left click download zip.          
